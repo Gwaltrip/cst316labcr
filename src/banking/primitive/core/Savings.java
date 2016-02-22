@@ -5,6 +5,7 @@ public class Savings extends Account {
 	private int numWithdraws = 0;
 	private static float WITHDRAW_FEE = 1.0f
 	private static int WITHDRAW_LIMIT = 3;
+	
 
 	public Savings(String name) {
 		super(name);
@@ -19,7 +20,7 @@ public class Savings extends Account {
 	 */
 	public boolean deposit(float amount) {
 		if (getState() != State.CLOSED && amount > 0.0f) {
-			balance = balance + amount - 0.50F;
+			balance = balance + amount - DEPOSIT_FEE;
 			if (balance >= 0.0f) {
 				setState(State.OPEN);
 			}
