@@ -2,6 +2,7 @@ package banking.primitive.core;
 
 public class Savings extends Account {
 	private static final long serialVersionUID = 111L;
+	private static final float _deduction = 1.0f;
 	private int numWithdraws = 0;
 
 	public Savings(String name) {
@@ -34,7 +35,7 @@ public class Savings extends Account {
 			balance = balance - amount;
 			numWithdraws++;
 			if (numWithdraws > 3)
-				balance = balance - 1.0f;
+				balance = balance - _deduction;
 			// KG BVA: should be < 0
 			if (balance <= 0.0f) {
 				setState(State.OVERDRAWN);
