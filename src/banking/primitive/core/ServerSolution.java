@@ -53,11 +53,11 @@ class ServerSolution implements AccountServer {
 		Account acc;
 		if ("Checking".equals(type)) {
 			acc = new Checking(name, balance);
-
-		} else if ("Savings".equals(type)) {
+		} 
+		else if ("Savings".equals(type)) {
 			acc = new Savings(name, balance);
-
-		} else {
+		} 
+		else {
 			throw new IllegalArgumentException("Bad account type:" + type);
 		}
 		try {
