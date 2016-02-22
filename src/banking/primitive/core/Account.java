@@ -20,19 +20,19 @@ public abstract class Account implements java.io.Serializable {
         this(n); 
         balance = b;
     }
+	
+	/**
+     * @return balance in the Account
+     */
+    public final float getBalance() {
+        return balance;
+    }
 
     /**
      * @return name of the Account
      */
     public final String getName() {
         return name;
-    }
-
-    /**
-     * @return balance in the Account
-     */
-    public final float getBalance() {
-        return balance;
     }
 
     /**
