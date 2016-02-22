@@ -6,6 +6,7 @@ public class Savings extends Account {
 	private static float WITHDRAW_FEE = 1.0f
 	private static int WITHDRAW_LIMIT = 3;
 	private static float DEPOSIT_FEE = 0.50f;
+	private static float MINIMUM = 0.0f;
 
 	public Savings(String name) {
 		super(name);
@@ -19,9 +20,9 @@ public class Savings extends Account {
 	 * A deposit comes with a fee of 50 cents per deposit
 	 */
 	public boolean deposit(float amount) {
-		if (getState() != State.CLOSED && amount > 0.0f) {
+		if (getState() != State.CLOSED && amount > MINIMUM) {
 			balance = balance + amount - DEPOSIT_FEE;
-			if (balance >= 0.0f) {
+			if (balance >= MINIMUM) {
 				setState(State.OPEN);
 			}
 		}
@@ -33,13 +34,13 @@ public class Savings extends Account {
 	 * An account whose balance dips below 0 is in an OVERDRAWN state
 	 */
 	public boolean withdraw(float amount) {
-		if (getState() == State.OPEN && amount > 0.0f) {
+		if (getState() == State.OPEN && amount > MINIMUM) {
 			balance = balance - amount;
 			numWithdraws++;
 			if (numWithdraws > WITHDRAW_LIMIT)
 				balance = balance - DEPOSIT_FEE;  //WHAT'S THIS!?
 			// KG BVA: should be < 0
-			if (balance <= 0.0f) {
+			if (balance < MINIMUM) {
 				setState(State.OVERDRAWN);
 			}
 			return true;
