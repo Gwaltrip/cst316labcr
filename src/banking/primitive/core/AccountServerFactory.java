@@ -3,18 +3,18 @@ package banking.primitive.core;
 
 public class AccountServerFactory {
 
-	protected static AccountServerFactory singleton = null;
+	protected static AccountServerFactory _singleton = null;
 
 	protected AccountServerFactory() {
 
 	}
 
 	public static AccountServerFactory getMe() {
-		if (singleton == null) {
-			singleton = new AccountServerFactory();
+		if (_singleton == null) {
+			_singleton = new AccountServerFactory();
 		}
 
-		return singleton;
+		return _singleton;
 	}
 
 	public AccountServer lookup() {
