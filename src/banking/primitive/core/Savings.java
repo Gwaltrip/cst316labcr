@@ -5,7 +5,7 @@ public class Savings extends Account {
 	private int numWithdraws = 0;
 	private static float WITHDRAW_FEE = 1.0f
 	private static int WITHDRAW_LIMIT = 3;
-	
+	private static float DEPOSIT_FEE = 0.50f;
 
 	public Savings(String name) {
 		super(name);
