@@ -2,7 +2,6 @@ package banking.primitive.core;
 
 public class Savings extends Account {
 	private static final long serialVersionUID = 111L;
-	private static final float _deduction = 1.0f;
 	private int numWithdraws = 0;
 	private static float WITHDRAW_FEE = 1.0f
 	private static int WITHDRAW_LIMIT = 3;
@@ -38,13 +37,8 @@ public class Savings extends Account {
 		if (getState() == State.OPEN && amount > MINIMUM) {
 			balance = balance - amount;
 			numWithdraws++;
-<<<<<<< HEAD
-			if (numWithdraws > 3)
-				balance = balance - _deduction;
-=======
 			if (numWithdraws > WITHDRAW_LIMIT)
 				balance = balance - DEPOSIT_FEE;  //WHAT'S THIS!?
->>>>>>> refs/remotes/origin/master
 			// KG BVA: should be < 0
 			if (balance < MINIMUM) {
 				setState(State.OVERDRAWN);
